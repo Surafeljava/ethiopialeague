@@ -22,9 +22,23 @@ class ApiServices {
     return games;
   }
 
-  void getTeamsData() async {
+  Future<List<dynamic>> getTeamsData() async {
     List<dynamic> teams = [];
 
     var result = await http.get(Uri.parse(baseUrl));
+
+    List<dynamic> gamesList = jsonDecode(result.body)["data"];
+
+    for (dynamic item in gamesList) {
+      print(item);
+      teams.add(
+        Game.fromJson(item).home_team,
+      );
+      teams.add(
+        Game.fromJson(item).visitor_team,
+      );
+    }
+
+    return teams;
   }
 }

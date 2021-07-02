@@ -1,6 +1,4 @@
-import 'package:ethioleague/screens/games/gameItem.dart';
 import 'package:ethioleague/screens/games/games_list.dart';
-import 'package:ethioleague/screens/teams/teamItem.dart';
 import 'package:ethioleague/screens/teams/team_list.dart';
 import 'package:flutter/material.dart';
 
