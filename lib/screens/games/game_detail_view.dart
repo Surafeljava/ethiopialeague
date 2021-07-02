@@ -10,17 +10,6 @@ class GameDetailView extends StatelessWidget {
     return Expanded(
       child: Container(
         margin: EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(1, 2),
-              blurRadius: 6.0,
-            )
-          ],
-        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
