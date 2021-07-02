@@ -15,6 +15,10 @@ class _GameListState extends State<GameList> {
 
   List<Game> gamesList = [];
 
+  bool gameSelected = false;
+
+  List<Game> selectedGame = [];
+
   @override
   void initState() {
     super.initState();
@@ -29,23 +33,74 @@ class _GameListState extends State<GameList> {
 
   @override
   Widget build(BuildContext context) {
-    return gamesList.length == 0
-        ? Container(
-            child: Center(
-              child: Container(
-                width: 50,
-                height: 50,
+    return Stack(
+      children: [
+        gamesList.length == 0
+            ? Container(
                 child: Center(
-                  child: CircularProgressIndicator(),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
                 ),
+              )
+            : ListView.builder(
+                itemCount: gamesList.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    child: GameItem(game: gamesList[index]),
+                    onTap: () {
+                      setState(() {
+                        gameSelected = true;
+                      });
+                    },
+                  );
+                },
               ),
-            ),
-          )
-        : ListView.builder(
-            itemCount: gamesList.length,
-            itemBuilder: (context, index) {
-              return GameItem(game: gamesList[index]);
-            },
-          );
+        gameSelected
+            ? Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.black12,
+                child: Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    height: MediaQuery.of(context).size.height * 0.7,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(1, 2),
+                          blurRadius: 6.0,
+                        )
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  gameSelected = false;
+                                });
+                              },
+                              icon: Icon(Icons.close),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            : Container(),
+      ],
+    );
   }
 }
