@@ -16,13 +16,26 @@ class TeamItem extends StatelessWidget {
           fontSize: 17.0,
         ),
       ),
-      subtitle: Text(
-        'City: ${team.city}',
-        style: TextStyle(
-          color: Colors.grey[600],
-          fontWeight: FontWeight.w400,
-          fontSize: 13.0,
-        ),
+      subtitle: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("City: ${team.city}"),
+              Text("Division: ${team.division}"),
+            ],
+          ),
+          Spacer(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Name: ${team.name}"),
+              Text("Conference: ${team.conference}"),
+            ],
+          ),
+          Spacer(),
+        ],
       ),
     );
   }
