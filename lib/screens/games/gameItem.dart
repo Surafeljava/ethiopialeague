@@ -12,15 +12,16 @@ class GameItem extends StatelessWidget {
       height: 100,
       margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(1, 2),
-              blurRadius: 6.0,
-            )
-          ]),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(5.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(1, 2),
+            blurRadius: 6.0,
+          )
+        ],
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -7,34 +7,85 @@ class TeamItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        "${team.full_name}(${team.abbreviation})",
-        style: TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.w600,
-          fontSize: 17.0,
-        ),
+    return Container(
+      height: 80,
+      margin: EdgeInsets.all(4),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(5.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(1, 2),
+            blurRadius: 6.0,
+          )
+        ],
       ),
-      subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Text(
+            "${team.full_name}(${team.abbreviation})",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+              fontSize: 18.0,
+            ),
+          ),
+          SizedBox(
+            height: 5.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text("City: ${team.city}"),
-              Text("Division: ${team.division}"),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "City: ${team.city}",
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                  Text(
+                    "Division: ${team.division}",
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ],
+              ),
+              Spacer(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Name: ${team.name}",
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                  Text(
+                    "Conference: ${team.conference}",
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ],
+              ),
+              Spacer(),
             ],
           ),
-          Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Name: ${team.name}"),
-              Text("Conference: ${team.conference}"),
-            ],
-          ),
-          Spacer(),
         ],
       ),
     );
