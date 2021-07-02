@@ -1,5 +1,6 @@
 import 'package:ethioleague/models/game.dart';
 import 'package:ethioleague/screens/games/gameItem.dart';
+import 'package:ethioleague/screens/games/game_detail_view.dart';
 import 'package:ethioleague/services/api_service.dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +56,7 @@ class _GameListState extends State<GameList> {
                     onTap: () {
                       setState(() {
                         gameSelected = true;
+                        selectedGame.add(gamesList[index]);
                       });
                     },
                   );
@@ -88,12 +90,14 @@ class _GameListState extends State<GameList> {
                               onPressed: () {
                                 setState(() {
                                   gameSelected = false;
+                                  selectedGame = [];
                                 });
                               },
                               icon: Icon(Icons.close),
                             )
                           ],
-                        )
+                        ),
+                        GameDetailView(game: selectedGame[0]),
                       ],
                     ),
                   ),
